@@ -12,7 +12,6 @@
 
 @synthesize phone;
 @synthesize password;
-@synthesize online;
 @synthesize userip;
 @synthesize acname;
 @synthesize bodyData;
