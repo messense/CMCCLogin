@@ -1,0 +1,32 @@
+//
+//  CMCCLoginHelper.h
+//  CMCCLogin
+//
+//  Created by messense on 12-11-21.
+//  Copyright (c) 2012年 messense. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface CMCCLoginHelper : NSObject <NSURLConnectionDataDelegate> {
+    NSString *phone;
+    NSString *password;
+    NSString *userip;
+    NSString *acname;
+    NSMutableData *bodyData;
+}
+
+@property (readwrite, copy) NSString *phone;
+@property (readwrite, copy) NSString *password;
+@property (readwrite, copy) NSString *userip;
+@property (readwrite, copy) NSString *acname;
+@property (readwrite, copy) NSMutableData *bodyData;
+
+- (id)initWithPhoneAndPassword:(NSString *)ph password:(NSString *)pwd;
+- (BOOL)login;
+- (BOOL)logout;
+
++ (NSString *)localIP;
++ (NSURL *)redirectUrl;
+
+@end
