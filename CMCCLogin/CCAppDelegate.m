@@ -8,10 +8,22 @@
 
 #import "CCAppDelegate.h"
 #import "CMCCLoginHelper.h"
+#import "CCLoginViewController.h"
+
+@interface CCAppDelegate () {
+    CMCCLoginHelper *cl;
+    NSViewController *vc;
+}
+
+@property (strong) CMCCLoginHelper *cl;
+@property NSViewController *vc;
+
+@end
 
 @implementation CCAppDelegate
 
-@synthesize cmcc;
+@synthesize cl;
+@synthesize vc;
 
 + (void)initialize {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
@@ -23,31 +35,32 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [_phone setObjectValue:[defaults objectForKey:@"wlanusername"]];
-    if ([defaults boolForKey:@"keeppassword"]) {
-        [_password setObjectValue:[defaults objectForKey:@"wlanpassword"]];
+    cl = [[CMCCLoginHelper alloc] initWithPhoneAndPassword:[defaults objectForKey:@"wlanusername"] password:[defaults objectForKey:@"wlanpassword"]];
+    vc = [[CCLoginViewController alloc] initWithAppDelegate:self
+                                                   withCmcc:cl];
+    [self setBoxContentView:vc];
+}
+
+- (void)setBoxContentView:(NSViewController *)viewController {
+    BOOL ended = [_window makeFirstResponder:_window];
+    if (!ended) {
+        NSBeep();
+        return;
     }
-    [_keeppassword setState:[defaults boolForKey:@"keeppassword"]];
-    cmcc = [[CMCCLoginHelper alloc] initWithPhoneAndPassword:[defaults objectForKey:@"wlanusername"] password:[defaults objectForKey:@"wlanpassword"]];
-}
-
-- (IBAction)connectWlan:(NSButton *)sender {
-    [self saveDefaults];
-    [cmcc login];
-}
-
-- (IBAction)disconnectWlan:(NSButton *)sender {
-    [self saveDefaults];
-    [cmcc logout];
-}
-
-- (void)saveDefaults {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[_phone objectValue] forKey:@"wlanusername"];
-    [defaults setObject:[_password objectValue] forKey:@"wlanpassword"];
-    [defaults setBool:[_keeppassword state] forKey:@"keeppassword"];
-    [cmcc setPhone:[_phone objectValue]];
-    [cmcc setPassword:[_password objectValue]];
+    NSView *v = [viewController view];
+    NSSize oldSize = [[_box contentView] frame].size;
+    NSSize newSize = [v frame].size;
+    float deltaWidth = newSize.width - oldSize.width;
+    float deltaHeight = newSize.height - oldSize.height;
+    NSRect windowFrame = [_window frame];
+    windowFrame.size.height += deltaHeight;
+    windowFrame.origin.y -= deltaHeight;
+    windowFrame.size.width += deltaWidth;
+    [_box setContentView:nil];
+    [_window setFrame:windowFrame
+              display:YES
+              animate:YES];
+    [_box setContentView:v];
 }
 
 @end

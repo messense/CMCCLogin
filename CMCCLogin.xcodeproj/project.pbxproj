@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33257C0D165E328D0027F953 /* CCLogoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33257C0B165E328D0027F953 /* CCLogoutViewController.m */; };
+		33257C0E165E328D0027F953 /* CCLogoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33257C0C165E328D0027F953 /* CCLogoutViewController.xib */; };
 		33493BCA165D232A00A6CCDA /* wifi.icns in Resources */ = {isa = PBXBuildFile; fileRef = 33493BC9165D232A00A6CCDA /* wifi.icns */; };
 		3375E604165D1028008B3C2B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3375E603165D1028008B3C2B /* README.md */; };
+		33CAF125165E1835001BB2E1 /* CCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33CAF123165E1835001BB2E1 /* CCLoginViewController.m */; };
+		33CAF126165E1835001BB2E1 /* CCLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33CAF124165E1835001BB2E1 /* CCLoginViewController.xib */; };
+		33CAF12A165E25F2001BB2E1 /* CCLoginStateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33CAF128165E25F2001BB2E1 /* CCLoginStateViewController.m */; };
+		33CAF12B165E25F2001BB2E1 /* CCLoginStateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33CAF129165E25F2001BB2E1 /* CCLoginStateViewController.xib */; };
 		33FEF3B4165CC0C100C353F7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33FEF3B3165CC0C100C353F7 /* Cocoa.framework */; };
 		33FEF3BE165CC0C100C353F7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 33FEF3BC165CC0C100C353F7 /* InfoPlist.strings */; };
 		33FEF3C0165CC0C100C353F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FEF3BF165CC0C100C353F7 /* main.m */; };
@@ -19,8 +25,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		33257C0A165E328D0027F953 /* CCLogoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLogoutViewController.h; sourceTree = "<group>"; };
+		33257C0B165E328D0027F953 /* CCLogoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCLogoutViewController.m; sourceTree = "<group>"; };
+		33257C0C165E328D0027F953 /* CCLogoutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCLogoutViewController.xib; sourceTree = "<group>"; };
 		33493BC9165D232A00A6CCDA /* wifi.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = wifi.icns; path = ../wifi.icns; sourceTree = "<group>"; };
 		3375E603165D1028008B3C2B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		33CAF122165E1835001BB2E1 /* CCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLoginViewController.h; sourceTree = "<group>"; };
+		33CAF123165E1835001BB2E1 /* CCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCLoginViewController.m; sourceTree = "<group>"; };
+		33CAF124165E1835001BB2E1 /* CCLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCLoginViewController.xib; sourceTree = "<group>"; };
+		33CAF127165E25F2001BB2E1 /* CCLoginStateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLoginStateViewController.h; sourceTree = "<group>"; };
+		33CAF128165E25F2001BB2E1 /* CCLoginStateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCLoginStateViewController.m; sourceTree = "<group>"; };
+		33CAF129165E25F2001BB2E1 /* CCLoginStateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCLoginStateViewController.xib; sourceTree = "<group>"; };
 		33FEF3AF165CC0C100C353F7 /* CMCCLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CMCCLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33FEF3B3165CC0C100C353F7 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		33FEF3B6165CC0C100C353F7 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -50,6 +65,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		33CAF120165E17FA001BB2E1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				33CAF122165E1835001BB2E1 /* CCLoginViewController.h */,
+				33CAF123165E1835001BB2E1 /* CCLoginViewController.m */,
+				33CAF124165E1835001BB2E1 /* CCLoginViewController.xib */,
+				33CAF127165E25F2001BB2E1 /* CCLoginStateViewController.h */,
+				33CAF128165E25F2001BB2E1 /* CCLoginStateViewController.m */,
+				33CAF129165E25F2001BB2E1 /* CCLoginStateViewController.xib */,
+				33257C0A165E328D0027F953 /* CCLogoutViewController.h */,
+				33257C0B165E328D0027F953 /* CCLogoutViewController.m */,
+				33257C0C165E328D0027F953 /* CCLogoutViewController.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		33FEF3A4165CC0C100C353F7 = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +126,7 @@
 				33FEF3D4165CC22200C353F7 /* CMCCLoginHelper.m */,
 				33FEF3C6165CC0C100C353F7 /* CCAppDelegate.m */,
 				33FEF3C8165CC0C100C353F7 /* MainMenu.xib */,
+				33CAF120165E17FA001BB2E1 /* View */,
 				33FEF3BA165CC0C100C353F7 /* Supporting Files */,
 			);
 			path = CMCCLogin;
@@ -171,6 +203,9 @@
 				33FEF3CA165CC0C100C353F7 /* MainMenu.xib in Resources */,
 				3375E604165D1028008B3C2B /* README.md in Resources */,
 				33493BCA165D232A00A6CCDA /* wifi.icns in Resources */,
+				33CAF126165E1835001BB2E1 /* CCLoginViewController.xib in Resources */,
+				33CAF12B165E25F2001BB2E1 /* CCLoginStateViewController.xib in Resources */,
+				33257C0E165E328D0027F953 /* CCLogoutViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +219,9 @@
 				33FEF3C0165CC0C100C353F7 /* main.m in Sources */,
 				33FEF3C7165CC0C100C353F7 /* CCAppDelegate.m in Sources */,
 				33FEF3D5165CC22200C353F7 /* CMCCLoginHelper.m in Sources */,
+				33CAF125165E1835001BB2E1 /* CCLoginViewController.m in Sources */,
+				33CAF12A165E25F2001BB2E1 /* CCLoginStateViewController.m in Sources */,
+				33257C0D165E328D0027F953 /* CCLogoutViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

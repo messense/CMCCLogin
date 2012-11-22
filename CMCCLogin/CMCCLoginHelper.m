@@ -62,8 +62,8 @@
     [NSURLConnection sendSynchronousRequest:req
                                          returningResponse:&response
                                                      error:&error];
-    //NSLog(@"Data: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-    if (error || [[self class] redirectUrl]) {
+    BOOL succeed = [[[self class] redirectUrl] isEqualTo:[NSURL URLWithString:@"http://www.baidu.com/"]];
+    if (error || !succeed) {
         return NO;
     }
     return YES;
@@ -87,11 +87,11 @@
     [NSURLConnection sendSynchronousRequest:req
                           returningResponse:&response
                                       error:&error];
-    //NSLog(@"Data: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-    if ([[self class] redirectUrl]) {
-        return YES;
-    }
-    return NO;
+    //BOOL succeed = [[[self class] redirectUrl] isEqualTo:[NSURL URLWithString:@"http://www.baidu.com/"]];
+    //if (error || succeed) {
+    //    return NO;
+    //}
+    return YES;
 }
 
 #pragma mark -
