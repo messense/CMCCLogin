@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CMCCLoginHelper : NSObject <NSURLConnectionDataDelegate> {
+@interface CMCCLoginHelper : NSObject {
     NSString *phone;
     NSString *password;
     NSString *userip;
