@@ -30,6 +30,7 @@
     [dict setObject:@"" forKey:@"wlanusername"];
     [dict setObject:@"" forKey:@"wlanpassword"];
     [dict setObject:@"" forKey:@"keeppassword"];
+    [dict setObject:@"" forKey:@"wlanacname"];
     [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
 }
 

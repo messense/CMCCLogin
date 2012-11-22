@@ -21,6 +21,9 @@
 
 - (id)init {
     self = [super init];
+    if (self) {
+        self.userip = [[self class] localIP];
+    }
     return self;
 }
 
@@ -29,6 +32,7 @@
     if (self) {
         [self setPhone:ph];
         [self setPassword:pwd];
+        self.userip = [[self class] localIP];
     }
     return self;
 }
@@ -40,7 +44,6 @@
     }
     // try to get wlanuserip and wlanacname
     NSURL *redirectUrl = [[self class] redirectUrl];
-    self.userip = [[self class] localIP];
     NSString *tmpstr1 = [[redirectUrl query] stringByReplacingOccurrencesOfString:@"wlanuserip=" withString:@""];
     NSString *tmpstr2 = [tmpstr1 stringByReplacingOccurrencesOfString:userip withString:@""];
     self.acname = [tmpstr2 stringByReplacingOccurrencesOfString:@"&wlanacname=" withString:@""];

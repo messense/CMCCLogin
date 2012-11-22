@@ -32,6 +32,11 @@
 }
 
 - (IBAction)logout:(NSButton *)sender {
+    if (![cmcc acname]) {
+        [cmcc setAcname:[[NSUserDefaults standardUserDefaults] objectForKey:@"wlanacname"]];
+    } else {
+        [[NSUserDefaults standardUserDefaults] setObject:[cmcc acname] forKey:@"wlanacname"];
+    }
     [self performSelectorInBackground:@selector(logoutInBackground:)
                            withObject:nil];
     [[svc stateText] setStringValue:@"正在退出..."];
