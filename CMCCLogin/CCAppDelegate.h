@@ -7,14 +7,19 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "THUserNotification.h"
 
-@interface CCAppDelegate : NSObject <NSApplicationDelegate> {
-
+@interface CCAppDelegate : NSObject <NSApplicationDelegate, THUserNotificationCenterDelegate> {
+    IBOutlet NSMenu *statusBarMenu;
+    NSStatusItem * statusBarItem;
 }
 
 @property (assign) IBOutlet NSWindow *window;
-@property (unsafe_unretained) IBOutlet NSBox *box;
 
-- (void)setBoxContentView:(NSViewController *)viewController;
+- (IBAction)showPreferenceWindow:(id)sender;
+- (IBAction)loginToCMCC:(id)sender;
+- (IBAction)logoutOfCMCC:(id)sender;
+- (IBAction)exitApplication:(id)sender;
+- (IBAction)showAboutPanel:(id)sender;
 
 @end
