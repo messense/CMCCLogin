@@ -15,6 +15,7 @@
 @synthesize userip;
 @synthesize acname;
 @synthesize bodyData;
+@synthesize online;
 
 #pragma mark -
 #pragma mark 实例方法
@@ -23,6 +24,7 @@
     self = [super init];
     if (self) {
         self.userip = [[self class] localIP];
+        self.online = NO;
     }
     return self;
 }
@@ -33,6 +35,7 @@
         [self setPhone:ph];
         [self setPassword:pwd];
         self.userip = [[self class] localIP];
+        self.online = NO;
     }
     return self;
 }
@@ -69,6 +72,7 @@
     if (error || !succeed) {
         return NO;
     }
+    self.online = YES;
     return YES;
 }
 
@@ -90,10 +94,11 @@
     [NSURLConnection sendSynchronousRequest:req
                           returningResponse:&response
                                       error:&error];
-    //BOOL succeed = [[[self class] redirectUrl] isEqualTo:[NSURL URLWithString:@"http://www.baidu.com/"]];
-    //if (error || succeed) {
-    //    return NO;
-    //}
+    BOOL succeed = [[[self class] redirectUrl] isEqualTo:[NSURL URLWithString:@"http://www.baidu.com/"]];
+    if (error || succeed) {
+        return NO;
+    }
+    self.online = NO;
     return YES;
 }
 

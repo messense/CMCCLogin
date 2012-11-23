@@ -14,6 +14,7 @@
     NSString *userip;
     NSString *acname;
     NSMutableData *bodyData;
+    BOOL online;
 }
 
 @property (readwrite, copy) NSString *phone;
@@ -21,6 +22,7 @@
 @property (readwrite, copy) NSString *userip;
 @property (readwrite, copy) NSString *acname;
 @property (readwrite, copy) NSMutableData *bodyData;
+@property (assign) BOOL online;
 
 - (id)initWithPhoneAndPassword:(NSString *)ph password:(NSString *)pwd;
 - (BOOL)login;
