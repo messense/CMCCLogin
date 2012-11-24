@@ -65,14 +65,7 @@
     [cmcc setPassword:[defaults objectForKey:@"wlanpassword"]];
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
-        BOOL succeed = NO;
-        if ([cmcc login]) {
-            succeed = YES;
-        }
-        NSString *str = succeed ? @"登录 CMCC 成功." : @"登录 CMCC 失败";
-        dispatch_async(dispatch_get_main_queue(), ^(void) {
-            [self toggleServiceState:str];
-        });
+        [cmcc login];
     });
 }
 
@@ -87,7 +80,7 @@
         [alert runModal];
         [self showPreferenceWindow:self];
     }
-    [self showUserNotification:@"正在断开CMCC"];
+    [self showUserNotification:@"正在下线CMCC"];
     if (![cmcc acname]) {
         [cmcc setAcname:[defaults objectForKey:@"wlanacname"]];
         NSLog(@"No acname provided, use ACNAME stored in UserDefaults %@", [defaults objectForKey:@"wlanacname"]);
@@ -97,14 +90,7 @@
     }
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
-        BOOL succeed = NO;
-        if ([cmcc logout]) {
-            succeed = YES;
-        }
-        NSString *str = succeed ? @"断开 CMCC 成功." : @"断开 CMCC 失败";
-        dispatch_async(dispatch_get_main_queue(), ^(void) {
-            [self toggleServiceState:str];
-        });
+        [cmcc logout];
     });
 }
 
@@ -123,10 +109,14 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     [self setupStatusItem];
     [self sleepAndWakeNotifications];
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self selector:@selector(toggleServiceState:) name:CMCCLoginNotification object:nil];
     // Reachability check
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkCMCCNetworkStatus:) name:kReachabilityChangedNotification object:nil];
+    [nc addObserver:self selector:@selector(checkCMCCNetworkStatus:) name:kReachabilityChangedNotification object:nil];
     cmccReachability = [Reachability reachabilityForLocalWiFi];
     [cmccReachability startNotifier];
+    hostReachability = [Reachability reachabilityWithHostname:@"www.baidu.com"];
+    [hostReachability startNotifier];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     cmcc = [[CMCCLoginHelper alloc] initWithPhoneAndPassword:[defaults objectForKey:@"wlanusername"] password:[defaults objectForKey:@"wlanpassword"]];
@@ -135,7 +125,10 @@
         [self showPreferenceWindow:nil];
         return;
     }
-    if ([defaults boolForKey:@"autologinwhenstart"]) {
+    // CMCC Network check
+    [self checkCMCCNetworkStatus:nil];
+    // Auto login
+    if ([defaults boolForKey:@"autologinwhenstart"] && ![cmcc online]) {
         [self loginToCMCC:nil];
     }
     
@@ -148,21 +141,35 @@
     [statusBarItem setHighlightMode:YES];
 }
 
+- (void)logoutOfCMCCWhenExit {
+    NSLog(@"Terminate application now");
+    [NSApp replyToApplicationShouldTerminate:YES];
+}
+
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutOfCMCCWhenExit) name:CMCCLogoutNotification object:nil];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults boolForKey:@"autologoutwhenexit"] && [[defaults objectForKey:@"wlanusername"] length] > 0 && [[defaults objectForKey:@"wlanpassword"] length] > 0 && [cmcc online]) {
-        BOOL succeed = NO;
-        if ([cmcc logout]) {
-            succeed = YES;
-        }
-        NSString *str = succeed ? @"断开 CMCC 成功." : @"断开 CMCC 失败";
-        [self toggleServiceState:str];
+        [self logoutOfCMCC:nil];
+        return NSTerminateLater;
     }
     return NSTerminateNow;
 }
 
-- (void)toggleServiceState:(id)note {
-    [self showUserNotification:note];
+- (void)toggleServiceState:(NSNotification *)note {
+    if ([[note name] isEqualToString:CMCCLoginNotification]) {
+        if ([cmcc online]) {
+            [self showUserNotification:@"CMCC 登录成功."];
+        } else {
+            [self showUserNotification:@"CMCC 登录失败."];
+        }
+    } else if ([[note name] isEqualToString:CMCCLogoutNotification]) {
+        if ([cmcc online]) {
+            [self showUserNotification:@"CMCC 下线失败."];
+        } else {
+            [self showUserNotification:@"CMCC 下线成功."];
+        }
+    }
 }
 
 #pragma mark - THUserNotificationCenter delegate
@@ -224,9 +231,10 @@
 
 - (void)checkCMCCNetworkStatus:(NSNotification *)notice {
     NetworkStatus cmccStatus = [cmccReachability currentReachabilityStatus];
+    NetworkStatus hostStatus = [hostReachability currentReachabilityStatus];
     if (cmccStatus != ReachableViaWiFi) {
         [cmcc setOnline:NO];
-        [self toggleServiceState:@"没有连接到 CMCC 无线网络，请检查！"];
+        [self showUserNotification:@"没有连接到 CMCC 无线网络，请检查！"];
     } else {
         NSString *ssid = [self currentWiFiSSID];
         if (![ssid isEqualToString:@"CMCC"]) {
@@ -234,11 +242,18 @@
             [self showUserNotification:@"没有连接到 CMCC 无线网洛，无法登录."];
         } else {
             // 检查是否是网络非正常断开导致，测试是否已经登录到了CMCC
-            if ([CMCCLoginHelper alreadyOnline]) {
-                [cmcc setOnline:YES];
-            } else {
-                if ([[NSUserDefaults standardUserDefaults] boolForKey:@"autologinwhenstart"]) {
-                    [self loginToCMCC:nil];
+            if (hostStatus == ReachableViaWiFi) {
+                if ([CMCCLoginHelper alreadyOnline]) {
+                    [cmcc setOnline:YES];
+                    [self showUserNotification:@"CMCC 连接已恢复正常."];
+                } else {
+                    if (notice && [[NSUserDefaults standardUserDefaults] boolForKey:@"autorelogin"]) {
+                        [self loginToCMCC:nil];
+                    } else {
+                        if (notice) {
+                            [self showUserNotification:@"CMCC 已断开."];
+                        }
+                    }
                 }
             }
         }

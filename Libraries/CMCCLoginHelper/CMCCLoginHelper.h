@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString *const CMCCLoginNotification;
+extern NSString *const CMCCLogoutNotification;
+
 @interface CMCCLoginHelper : NSObject {
     NSString *phone;
     NSString *password;

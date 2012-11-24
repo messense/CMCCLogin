@@ -15,6 +15,7 @@
     IBOutlet NSMenu *statusBarMenu;
     NSStatusItem * statusBarItem;
     Reachability *cmccReachability;
+    Reachability *hostReachability;
 }
 
 @property (assign) IBOutlet NSWindow *window;

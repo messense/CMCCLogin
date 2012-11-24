@@ -8,6 +8,9 @@
 
 #import "CMCCLoginHelper.h"
 
+NSString *const CMCCLoginNotification = @"CMCCLoginNotification";
+NSString *const CMCCLogoutNotification = @"CMCCLogoutNotification";
+
 @implementation CMCCLoginHelper
 
 @synthesize phone;
@@ -69,10 +72,14 @@
                                          returningResponse:&response
                                                      error:&error];
     BOOL succeed = [[[self class] redirectUrl] isEqualTo:[NSURL URLWithString:@"http://www.baidu.com/"]];
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     if (error || !succeed) {
+        self.online = NO;
+        [nc postNotificationName:CMCCLoginNotification object:self];
         return NO;
     }
     self.online = YES;
+    [nc postNotificationName:CMCCLoginNotification object:self];
     return YES;
 }
 
@@ -95,10 +102,14 @@
                           returningResponse:&response
                                       error:&error];
     BOOL succeed = [[[self class] redirectUrl] isEqualTo:[NSURL URLWithString:@"http://www.baidu.com/"]];
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     if (error || succeed) {
+        self.online = NO;
+        [nc postNotificationName:CMCCLogoutNotification object:self];
         return NO;
     }
     self.online = NO;
+    [nc postNotificationName:CMCCLogoutNotification object:self];
     return YES;
 }
 
