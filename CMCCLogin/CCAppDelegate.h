@@ -16,6 +16,7 @@
     NSStatusItem * statusBarItem;
     Reachability *cmccReachability;
     Reachability *hostReachability;
+    BOOL _loaded;
 }
 
 @property (assign) IBOutlet NSWindow *window;

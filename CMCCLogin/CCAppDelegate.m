@@ -32,6 +32,14 @@
     [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
 }
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        _loaded = NO;
+    }
+    return self;
+}
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -70,6 +78,10 @@
 }
 
 - (IBAction)logoutOfCMCC:(id)sender {
+    if (![cmcc online]) {
+        [self showUserNotification:@"CMCC已经下线."];
+        return;
+    }
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([[defaults objectForKey:@"wlanusername"] length] <= 0 || [[defaults objectForKey:@"wlanpassword"] length] <= 0) {
         NSAlert *alert = [NSAlert alertWithMessageText:@"请先配置账号和密码!"
@@ -111,6 +123,7 @@
     [self sleepAndWakeNotifications];
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(toggleServiceState:) name:CMCCLoginNotification object:nil];
+    [nc addObserver:self selector:@selector(toggleServiceState:) name:CMCCLogoutNotification object:nil];
     // Reachability check
     [nc addObserver:self selector:@selector(checkCMCCNetworkStatus:) name:kReachabilityChangedNotification object:nil];
     cmccReachability = [Reachability reachabilityForLocalWiFi];
@@ -129,9 +142,15 @@
     [self checkCMCCNetworkStatus:nil];
     // Auto login
     if ([defaults boolForKey:@"autologinwhenstart"] && ![cmcc online]) {
-        [self loginToCMCC:nil];
+        NetworkStatus cmccStatus = [cmccReachability currentReachabilityStatus];
+        NetworkStatus hostStatus = [hostReachability currentReachabilityStatus];
+        if (cmccStatus == ReachableViaWiFi && hostStatus == ReachableViaWiFi) {
+            [self loginToCMCC:nil];
+        } else {
+            [self showUserNotification:@"没有成功连接到 CMCC 无线网洛，无法登录."];
+        }
     }
-    
+    _loaded = YES;
 }
 
 - (void)setupStatusItem {
@@ -247,10 +266,10 @@
                     [cmcc setOnline:YES];
                     [self showUserNotification:@"CMCC 连接已恢复正常."];
                 } else {
-                    if (notice && [[NSUserDefaults standardUserDefaults] boolForKey:@"autorelogin"]) {
+                    if (_loaded && [[NSUserDefaults standardUserDefaults] boolForKey:@"autorelogin"]) {
                         [self loginToCMCC:nil];
                     } else {
-                        if (notice) {
+                        if (_loaded) {
                             [self showUserNotification:@"CMCC 已断开."];
                         }
                     }
