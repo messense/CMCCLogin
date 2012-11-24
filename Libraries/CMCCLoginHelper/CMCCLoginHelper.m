@@ -56,7 +56,7 @@
                                                        cachePolicy:NSURLRequestReloadIgnoringCacheData
                                                    timeoutInterval:10.0f];
     [req setHTTPMethod:@"POST"];
-    NSString *post = [NSString stringWithFormat:@"wlanuserip=%@&wlanacname=%@&wlanacip=&loginmode=static&wlanacssid=CMCC&issaveinfo=&portion=CMCC&uaID=PCUA0002&obsReturnAccount=&staticusername=%@&staticpassword=%@", self.userip, self.acname, self.phone, self.password];
+    NSString *post = [NSString stringWithFormat:@"wlanuserip=%@&wlanacname=%@&wlanacip=&loginmode=static&wlanacssid=CMCC&issaveinfo=&portion=CMCC&uaID=PCUA0002&obsReturnAccount=&Token=First&staticusername=%@&staticpassword=%@", self.userip, self.acname, self.phone, self.password];
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     NSString *length = [NSString stringWithFormat:@"%ld", [postData length]];
     [req setValue:length forHTTPHeaderField:@"Content-Length"];

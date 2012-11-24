@@ -7,13 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		33493BCA165D232A00A6CCDA /* wifi.icns in Resources */ = {isa = PBXBuildFile; fileRef = 33493BC9165D232A00A6CCDA /* wifi.icns */; };
+		330FE01D1660F979002E857D /* CoreWLAN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 330FE01C1660F979002E857D /* CoreWLAN.framework */; };
+		333C5F6B1660F15800CE84BB /* status_item_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 333C5F681660F15800CE84BB /* status_item_icon.png */; };
+		333C5F6C1660F15800CE84BB /* status_item_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 333C5F691660F15800CE84BB /* status_item_icon@2x.png */; };
+		333C5F6D1660F15800CE84BB /* wifi.icns in Resources */ = {isa = PBXBuildFile; fileRef = 333C5F6A1660F15800CE84BB /* wifi.icns */; };
+		333C5F7A1660F1A500CE84BB /* CMCCLoginHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 333C5F701660F1A500CE84BB /* CMCCLoginHelper.m */; };
+		333C5F7B1660F1A500CE84BB /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 333C5F731660F1A500CE84BB /* Reachability.m */; };
+		333C5F7C1660F1A500CE84BB /* banner2lines.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 333C5F751660F1A500CE84BB /* banner2lines.tiff */; };
+		333C5F7D1660F1A500CE84BB /* McAnimationUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 333C5F771660F1A500CE84BB /* McAnimationUtility.m */; };
+		333C5F7E1660F1A500CE84BB /* THUserNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 333C5F791660F1A500CE84BB /* THUserNotification.m */; };
+		333C5F801660F1C800CE84BB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 333C5F7F1660F1C800CE84BB /* SystemConfiguration.framework */; };
 		3375E604165D1028008B3C2B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3375E603165D1028008B3C2B /* README.md */; };
-		33D38BCF165E829D00CC5269 /* status_item_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 33D38BCD165E829D00CC5269 /* status_item_icon.png */; };
-		33D38BD0165E829D00CC5269 /* status_item_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33D38BCE165E829D00CC5269 /* status_item_icon@2x.png */; };
-		33F77F9B165F37FB00846FB2 /* banner2lines.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 33F77F96165F37FB00846FB2 /* banner2lines.tiff */; };
-		33F77F9C165F37FB00846FB2 /* McAnimationUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F77F98165F37FB00846FB2 /* McAnimationUtility.m */; };
-		33F77F9D165F37FB00846FB2 /* THUserNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F77F9A165F37FB00846FB2 /* THUserNotification.m */; };
 		33F77F9F165F388000846FB2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33F77F9E165F388000846FB2 /* QuartzCore.framework */; };
 		33FEF3B4165CC0C100C353F7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33FEF3B3165CC0C100C353F7 /* Cocoa.framework */; };
 		33FEF3BE165CC0C100C353F7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 33FEF3BC165CC0C100C353F7 /* InfoPlist.strings */; };
@@ -21,19 +25,24 @@
 		33FEF3C4165CC0C100C353F7 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 33FEF3C2165CC0C100C353F7 /* Credits.rtf */; };
 		33FEF3C7165CC0C100C353F7 /* CCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FEF3C6165CC0C100C353F7 /* CCAppDelegate.m */; };
 		33FEF3CA165CC0C100C353F7 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33FEF3C8165CC0C100C353F7 /* MainMenu.xib */; };
-		33FEF3D5165CC22200C353F7 /* CMCCLoginHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FEF3D4165CC22200C353F7 /* CMCCLoginHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		33493BC9165D232A00A6CCDA /* wifi.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = wifi.icns; path = ../wifi.icns; sourceTree = "<group>"; };
-		3375E603165D1028008B3C2B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		33D38BCD165E829D00CC5269 /* status_item_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = status_item_icon.png; sourceTree = "<group>"; };
-		33D38BCE165E829D00CC5269 /* status_item_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "status_item_icon@2x.png"; sourceTree = "<group>"; };
-		33F77F96165F37FB00846FB2 /* banner2lines.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = banner2lines.tiff; path = CMCCLogin/THUserNotification/banner2lines.tiff; sourceTree = "<group>"; };
-		33F77F97165F37FB00846FB2 /* McAnimationUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = McAnimationUtility.h; path = CMCCLogin/THUserNotification/McAnimationUtility.h; sourceTree = "<group>"; };
-		33F77F98165F37FB00846FB2 /* McAnimationUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = McAnimationUtility.m; path = CMCCLogin/THUserNotification/McAnimationUtility.m; sourceTree = "<group>"; };
-		33F77F99165F37FB00846FB2 /* THUserNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = THUserNotification.h; path = CMCCLogin/THUserNotification/THUserNotification.h; sourceTree = "<group>"; };
-		33F77F9A165F37FB00846FB2 /* THUserNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = THUserNotification.m; path = CMCCLogin/THUserNotification/THUserNotification.m; sourceTree = "<group>"; };
+		330FE01C1660F979002E857D /* CoreWLAN.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreWLAN.framework; path = System/Library/Frameworks/CoreWLAN.framework; sourceTree = SDKROOT; };
+		333C5F681660F15800CE84BB /* status_item_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = status_item_icon.png; path = Resources/status_item_icon.png; sourceTree = "<group>"; };
+		333C5F691660F15800CE84BB /* status_item_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "status_item_icon@2x.png"; path = "Resources/status_item_icon@2x.png"; sourceTree = "<group>"; };
+		333C5F6A1660F15800CE84BB /* wifi.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = wifi.icns; path = Resources/wifi.icns; sourceTree = "<group>"; };
+		333C5F6F1660F1A500CE84BB /* CMCCLoginHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMCCLoginHelper.h; sourceTree = "<group>"; };
+		333C5F701660F1A500CE84BB /* CMCCLoginHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMCCLoginHelper.m; sourceTree = "<group>"; };
+		333C5F721660F1A500CE84BB /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		333C5F731660F1A500CE84BB /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		333C5F751660F1A500CE84BB /* banner2lines.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = banner2lines.tiff; sourceTree = "<group>"; };
+		333C5F761660F1A500CE84BB /* McAnimationUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = McAnimationUtility.h; sourceTree = "<group>"; };
+		333C5F771660F1A500CE84BB /* McAnimationUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = McAnimationUtility.m; sourceTree = "<group>"; };
+		333C5F781660F1A500CE84BB /* THUserNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THUserNotification.h; sourceTree = "<group>"; };
+		333C5F791660F1A500CE84BB /* THUserNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THUserNotification.m; sourceTree = "<group>"; };
+		333C5F7F1660F1C800CE84BB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		3375E603165D1028008B3C2B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		33F77F9E165F388000846FB2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		33FEF3AF165CC0C100C353F7 /* CMCCLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CMCCLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33FEF3B3165CC0C100C353F7 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -48,8 +57,6 @@
 		33FEF3C5165CC0C100C353F7 /* CCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCAppDelegate.h; sourceTree = "<group>"; };
 		33FEF3C6165CC0C100C353F7 /* CCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCAppDelegate.m; sourceTree = "<group>"; };
 		33FEF3C9165CC0C100C353F7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		33FEF3D3165CC22200C353F7 /* CMCCLoginHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMCCLoginHelper.h; path = CMCCLogin/CMCCLoginHelper.h; sourceTree = "<group>"; };
-		33FEF3D4165CC22200C353F7 /* CMCCLoginHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMCCLoginHelper.m; path = CMCCLogin/CMCCLoginHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +64,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				330FE01D1660F979002E857D /* CoreWLAN.framework in Frameworks */,
+				333C5F801660F1C800CE84BB /* SystemConfiguration.framework in Frameworks */,
 				33F77F9F165F388000846FB2 /* QuartzCore.framework in Frameworks */,
 				33FEF3B4165CC0C100C353F7 /* Cocoa.framework in Frameworks */,
 			);
@@ -65,34 +74,65 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		33A79492165F34E200AFEFB2 /* Libraries */ = {
+		333C5F601660F13100CE84BB /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				33F77FA0165F389300846FB2 /* THUserNotification */,
-				33FEF3D3165CC22200C353F7 /* CMCCLoginHelper.h */,
-				33FEF3D4165CC22200C353F7 /* CMCCLoginHelper.m */,
+				333C5F6E1660F1A500CE84BB /* CMCCLoginHelper */,
+				333C5F711660F1A500CE84BB /* Reachability */,
+				333C5F741660F1A500CE84BB /* THUserNotification */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
 		};
-		33F77FA0165F389300846FB2 /* THUserNotification */ = {
+		333C5F671660F14900CE84BB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				33F77F96165F37FB00846FB2 /* banner2lines.tiff */,
-				33F77F97165F37FB00846FB2 /* McAnimationUtility.h */,
-				33F77F98165F37FB00846FB2 /* McAnimationUtility.m */,
-				33F77F99165F37FB00846FB2 /* THUserNotification.h */,
-				33F77F9A165F37FB00846FB2 /* THUserNotification.m */,
+				333C5F681660F15800CE84BB /* status_item_icon.png */,
+				333C5F691660F15800CE84BB /* status_item_icon@2x.png */,
+				333C5F6A1660F15800CE84BB /* wifi.icns */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		333C5F6E1660F1A500CE84BB /* CMCCLoginHelper */ = {
+			isa = PBXGroup;
+			children = (
+				333C5F6F1660F1A500CE84BB /* CMCCLoginHelper.h */,
+				333C5F701660F1A500CE84BB /* CMCCLoginHelper.m */,
+			);
+			name = CMCCLoginHelper;
+			path = Libraries/CMCCLoginHelper;
+			sourceTree = "<group>";
+		};
+		333C5F711660F1A500CE84BB /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				333C5F721660F1A500CE84BB /* Reachability.h */,
+				333C5F731660F1A500CE84BB /* Reachability.m */,
+			);
+			name = Reachability;
+			path = Libraries/Reachability;
+			sourceTree = "<group>";
+		};
+		333C5F741660F1A500CE84BB /* THUserNotification */ = {
+			isa = PBXGroup;
+			children = (
+				333C5F751660F1A500CE84BB /* banner2lines.tiff */,
+				333C5F761660F1A500CE84BB /* McAnimationUtility.h */,
+				333C5F771660F1A500CE84BB /* McAnimationUtility.m */,
+				333C5F781660F1A500CE84BB /* THUserNotification.h */,
+				333C5F791660F1A500CE84BB /* THUserNotification.m */,
 			);
 			name = THUserNotification;
+			path = Libraries/THUserNotification;
 			sourceTree = "<group>";
 		};
 		33FEF3A4165CC0C100C353F7 = {
 			isa = PBXGroup;
 			children = (
-				33A79492165F34E200AFEFB2 /* Libraries */,
-				3375E603165D1028008B3C2B /* README.md */,
 				33FEF3B9165CC0C100C353F7 /* CMCCLogin */,
+				333C5F671660F14900CE84BB /* Resources */,
+				333C5F601660F13100CE84BB /* Libraries */,
 				33FEF3B2165CC0C100C353F7 /* Frameworks */,
 				33FEF3B0165CC0C100C353F7 /* Products */,
 			);
@@ -109,6 +149,8 @@
 		33FEF3B2165CC0C100C353F7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				330FE01C1660F979002E857D /* CoreWLAN.framework */,
+				333C5F7F1660F1C800CE84BB /* SystemConfiguration.framework */,
 				33F77F9E165F388000846FB2 /* QuartzCore.framework */,
 				33FEF3B3165CC0C100C353F7 /* Cocoa.framework */,
 				33FEF3B5165CC0C100C353F7 /* Other Frameworks */,
@@ -140,9 +182,7 @@
 		33FEF3BA165CC0C100C353F7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				33D38BCD165E829D00CC5269 /* status_item_icon.png */,
-				33D38BCE165E829D00CC5269 /* status_item_icon@2x.png */,
-				33493BC9165D232A00A6CCDA /* wifi.icns */,
+				3375E603165D1028008B3C2B /* README.md */,
 				33FEF3BB165CC0C100C353F7 /* CMCCLogin-Info.plist */,
 				33FEF3BC165CC0C100C353F7 /* InfoPlist.strings */,
 				33FEF3BF165CC0C100C353F7 /* main.m */,
@@ -209,10 +249,10 @@
 				33FEF3C4165CC0C100C353F7 /* Credits.rtf in Resources */,
 				33FEF3CA165CC0C100C353F7 /* MainMenu.xib in Resources */,
 				3375E604165D1028008B3C2B /* README.md in Resources */,
-				33493BCA165D232A00A6CCDA /* wifi.icns in Resources */,
-				33D38BCF165E829D00CC5269 /* status_item_icon.png in Resources */,
-				33D38BD0165E829D00CC5269 /* status_item_icon@2x.png in Resources */,
-				33F77F9B165F37FB00846FB2 /* banner2lines.tiff in Resources */,
+				333C5F6B1660F15800CE84BB /* status_item_icon.png in Resources */,
+				333C5F6C1660F15800CE84BB /* status_item_icon@2x.png in Resources */,
+				333C5F6D1660F15800CE84BB /* wifi.icns in Resources */,
+				333C5F7C1660F1A500CE84BB /* banner2lines.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,9 +265,10 @@
 			files = (
 				33FEF3C0165CC0C100C353F7 /* main.m in Sources */,
 				33FEF3C7165CC0C100C353F7 /* CCAppDelegate.m in Sources */,
-				33FEF3D5165CC22200C353F7 /* CMCCLoginHelper.m in Sources */,
-				33F77F9C165F37FB00846FB2 /* McAnimationUtility.m in Sources */,
-				33F77F9D165F37FB00846FB2 /* THUserNotification.m in Sources */,
+				333C5F7A1660F1A500CE84BB /* CMCCLoginHelper.m in Sources */,
+				333C5F7B1660F1A500CE84BB /* Reachability.m in Sources */,
+				333C5F7D1660F1A500CE84BB /* McAnimationUtility.m in Sources */,
+				333C5F7E1660F1A500CE84BB /* THUserNotification.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
