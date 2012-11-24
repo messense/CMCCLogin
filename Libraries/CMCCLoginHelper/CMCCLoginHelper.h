@@ -30,5 +30,6 @@
 
 + (NSString *)localIP;
 + (NSURL *)redirectUrl;
++ (BOOL)alreadyOnline;
 
 @end

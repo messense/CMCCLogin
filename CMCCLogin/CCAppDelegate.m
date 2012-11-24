@@ -233,8 +233,13 @@
             [cmcc setOnline:NO];
             [self showUserNotification:@"没有连接到 CMCC 无线网洛，无法登录."];
         } else {
-            if ([[NSUserDefaults standardUserDefaults] boolForKey:@"autologinwhenstart"]) {
-                [self loginToCMCC:nil];
+            // 检查是否是网络非正常断开导致，测试是否已经登录到了CMCC
+            if ([CMCCLoginHelper alreadyOnline]) {
+                [cmcc setOnline:YES];
+            } else {
+                if ([[NSUserDefaults standardUserDefaults] boolForKey:@"autologinwhenstart"]) {
+                    [self loginToCMCC:nil];
+                }
             }
         }
     }

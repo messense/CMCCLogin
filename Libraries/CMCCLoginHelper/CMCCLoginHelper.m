@@ -133,4 +133,8 @@
     return [httpResponse URL];
 }
 
++ (BOOL)alreadyOnline {
+    return [[[self class] redirectUrl] isEqualTo:[NSURL URLWithString:@"http://www.baidu.com/"]];
+}
+
 @end
