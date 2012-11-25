@@ -10,20 +10,25 @@
 #import "THUserNotification.h"
 
 @class Reachability;
+@class CMCCLoginHelper;
 
-@interface CCAppDelegate : NSObject <NSApplicationDelegate, THUserNotificationCenterDelegate> {
+@interface CCAppDelegate : NSObject <NSApplicationDelegate, THUserNotificationCenterDelegate, NSWindowDelegate> {
     IBOutlet NSMenu *statusBarMenu;
     NSStatusItem * statusBarItem;
     Reachability *cmccReachability;
     Reachability *hostReachability;
     BOOL _loaded;
+    __block CMCCLoginHelper *cmcc;
+    IBOutlet NSMenuItem *infoMenuItem;
+    IBOutlet NSMenuItem *loginMenuItem;
 }
 
 @property (assign) IBOutlet NSWindow *window;
 
+- (IBAction)toggleService:(id)sender;
 - (IBAction)showPreferenceWindow:(id)sender;
-- (IBAction)loginToCMCC:(id)sender;
-- (IBAction)logoutOfCMCC:(id)sender;
+- (void)loginToCMCC;
+- (void)logoutOfCMCC;
 - (IBAction)exitApplication:(id)sender;
 - (IBAction)showAboutPanel:(id)sender;
 

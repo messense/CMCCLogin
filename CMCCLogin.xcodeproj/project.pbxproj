@@ -18,6 +18,12 @@
 		333C5F7E1660F1A500CE84BB /* THUserNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 333C5F791660F1A500CE84BB /* THUserNotification.m */; };
 		333C5F801660F1C800CE84BB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 333C5F7F1660F1C800CE84BB /* SystemConfiguration.framework */; };
 		3375E604165D1028008B3C2B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3375E603165D1028008B3C2B /* README.md */; };
+		337BB2751661EBA300C271CD /* status_item_icon_alt.png in Resources */ = {isa = PBXBuildFile; fileRef = 337BB2731661EBA300C271CD /* status_item_icon_alt.png */; };
+		337BB2761661EBA300C271CD /* status_item_icon_alt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 337BB2741661EBA300C271CD /* status_item_icon_alt@2x.png */; };
+		33B1A3F31661E531005EFD44 /* status_item_icon_offline.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B1A3EF1661E531005EFD44 /* status_item_icon_offline.png */; };
+		33B1A3F41661E531005EFD44 /* status_item_icon_offline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B1A3F01661E531005EFD44 /* status_item_icon_offline@2x.png */; };
+		33B1A3F51661E531005EFD44 /* status_offline.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B1A3F11661E531005EFD44 /* status_offline.png */; };
+		33B1A3F61661E531005EFD44 /* status_online.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B1A3F21661E531005EFD44 /* status_online.png */; };
 		33F77F9F165F388000846FB2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33F77F9E165F388000846FB2 /* QuartzCore.framework */; };
 		33FEF3B4165CC0C100C353F7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33FEF3B3165CC0C100C353F7 /* Cocoa.framework */; };
 		33FEF3BE165CC0C100C353F7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 33FEF3BC165CC0C100C353F7 /* InfoPlist.strings */; };
@@ -43,6 +49,12 @@
 		333C5F791660F1A500CE84BB /* THUserNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THUserNotification.m; sourceTree = "<group>"; };
 		333C5F7F1660F1C800CE84BB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		3375E603165D1028008B3C2B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		337BB2731661EBA300C271CD /* status_item_icon_alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = status_item_icon_alt.png; path = Resources/status_item_icon_alt.png; sourceTree = "<group>"; };
+		337BB2741661EBA300C271CD /* status_item_icon_alt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "status_item_icon_alt@2x.png"; path = "Resources/status_item_icon_alt@2x.png"; sourceTree = "<group>"; };
+		33B1A3EF1661E531005EFD44 /* status_item_icon_offline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = status_item_icon_offline.png; path = Resources/status_item_icon_offline.png; sourceTree = "<group>"; };
+		33B1A3F01661E531005EFD44 /* status_item_icon_offline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "status_item_icon_offline@2x.png"; path = "Resources/status_item_icon_offline@2x.png"; sourceTree = "<group>"; };
+		33B1A3F11661E531005EFD44 /* status_offline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = status_offline.png; path = Resources/status_offline.png; sourceTree = "<group>"; };
+		33B1A3F21661E531005EFD44 /* status_online.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = status_online.png; path = Resources/status_online.png; sourceTree = "<group>"; };
 		33F77F9E165F388000846FB2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		33FEF3AF165CC0C100C353F7 /* CMCCLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CMCCLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33FEF3B3165CC0C100C353F7 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -87,6 +99,12 @@
 		333C5F671660F14900CE84BB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				337BB2731661EBA300C271CD /* status_item_icon_alt.png */,
+				337BB2741661EBA300C271CD /* status_item_icon_alt@2x.png */,
+				33B1A3EF1661E531005EFD44 /* status_item_icon_offline.png */,
+				33B1A3F01661E531005EFD44 /* status_item_icon_offline@2x.png */,
+				33B1A3F11661E531005EFD44 /* status_offline.png */,
+				33B1A3F21661E531005EFD44 /* status_online.png */,
 				333C5F681660F15800CE84BB /* status_item_icon.png */,
 				333C5F691660F15800CE84BB /* status_item_icon@2x.png */,
 				333C5F6A1660F15800CE84BB /* wifi.icns */,
@@ -253,6 +271,12 @@
 				333C5F6C1660F15800CE84BB /* status_item_icon@2x.png in Resources */,
 				333C5F6D1660F15800CE84BB /* wifi.icns in Resources */,
 				333C5F7C1660F1A500CE84BB /* banner2lines.tiff in Resources */,
+				33B1A3F31661E531005EFD44 /* status_item_icon_offline.png in Resources */,
+				33B1A3F41661E531005EFD44 /* status_item_icon_offline@2x.png in Resources */,
+				33B1A3F51661E531005EFD44 /* status_offline.png in Resources */,
+				33B1A3F61661E531005EFD44 /* status_online.png in Resources */,
+				337BB2751661EBA300C271CD /* status_item_icon_alt.png in Resources */,
+				337BB2761661EBA300C271CD /* status_item_icon_alt@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
