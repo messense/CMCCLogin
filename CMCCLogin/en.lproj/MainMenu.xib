@@ -416,7 +416,7 @@
 											<string key="NSReuseIdentifierKey">_NS:9</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSButtonCell" key="NSCell" id="777773131">
-												<int key="NSCellFlags">-2080374784</int>
+												<int key="NSCellFlags">67108864</int>
 												<int key="NSCellFlags2">268435456</int>
 												<string key="NSContents">启用通知</string>
 												<reference key="NSSupport" ref="960431823"/>

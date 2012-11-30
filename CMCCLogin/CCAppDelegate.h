@@ -14,11 +14,6 @@
 
 @interface CCAppDelegate : NSObject <NSApplicationDelegate, THUserNotificationCenterDelegate, NSWindowDelegate> {
     IBOutlet NSMenu *statusBarMenu;
-    NSStatusItem * statusBarItem;
-    Reachability *cmccReachability;
-    Reachability *hostReachability;
-    BOOL _loaded;
-    __block CMCCLoginHelper *cmcc;
     IBOutlet NSMenuItem *infoMenuItem;
     IBOutlet NSMenuItem *loginMenuItem;
 }
