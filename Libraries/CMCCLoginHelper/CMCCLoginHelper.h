@@ -8,24 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString *const CMCCLoginNotification;
-extern NSString *const CMCCLogoutNotification;
+extern NSString * const CMCCLoginNotification;
+extern NSString * const CMCCLogoutNotification;
 
-@interface CMCCLoginHelper : NSObject {
-    NSString *phone;
-    NSString *password;
-    NSString *userip;
-    NSString *acname;
-    NSMutableData *bodyData;
-    BOOL online;
-}
+@interface CMCCLoginHelper : NSObject
 
-@property (readwrite, copy) NSString *phone;
-@property (readwrite, copy) NSString *password;
-@property (readwrite, copy) NSString *userip;
-@property (readwrite, copy) NSString *acname;
-@property (readwrite, copy) NSMutableData *bodyData;
-@property (assign) BOOL online;
+@property (nonatomic, copy) NSString *phone;
+@property (nonatomic, copy) NSString *password;
+@property (nonatomic, copy) NSString *userip;
+@property (nonatomic, copy) NSString *acname;
+@property (nonatomic, assign) BOOL online;
 
 - (id)initWithPhoneAndPassword:(NSString *)ph password:(NSString *)pwd;
 - (BOOL)login;

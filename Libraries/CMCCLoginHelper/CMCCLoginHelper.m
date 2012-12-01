@@ -8,17 +8,16 @@
 
 #import "CMCCLoginHelper.h"
 
-NSString *const CMCCLoginNotification = @"CMCCLoginNotification";
-NSString *const CMCCLogoutNotification = @"CMCCLogoutNotification";
+NSString * const CMCCLoginNotification = @"CMCCLoginNotification";
+NSString * const CMCCLogoutNotification = @"CMCCLogoutNotification";
 
 @implementation CMCCLoginHelper
 
-@synthesize phone;
-@synthesize password;
-@synthesize userip;
-@synthesize acname;
-@synthesize bodyData;
-@synthesize online;
+@synthesize phone = _phone;
+@synthesize password = _password;
+@synthesize userip = _userip;
+@synthesize acname = _acname;
+@synthesize online = _online;
 
 #pragma mark -
 #pragma mark 实例方法
@@ -33,25 +32,23 @@ NSString *const CMCCLogoutNotification = @"CMCCLogoutNotification";
 }
 
 - (id)initWithPhoneAndPassword:(NSString *)ph password:(NSString *)pwd {
-    self = [super init];
+    self = [self init];
     if (self) {
-        [self setPhone:ph];
-        [self setPassword:pwd];
-        self.userip = [[self class] localIP];
-        self.online = NO;
+        self.phone = ph;
+        self.password = pwd;
     }
     return self;
 }
 
 - (BOOL)login {
-    if (![self phone] || ![self password]) {
+    if (!self.phone || !self.password) {
         NSLog(@"No phone or password provided.");
         return NO;
     }
     // try to get wlanuserip and wlanacname
     NSURL *redirectUrl = [[self class] redirectUrl];
     NSString *tmpstr1 = [[redirectUrl query] stringByReplacingOccurrencesOfString:@"wlanuserip=" withString:@""];
-    NSString *tmpstr2 = [tmpstr1 stringByReplacingOccurrencesOfString:userip withString:@""];
+    NSString *tmpstr2 = [tmpstr1 stringByReplacingOccurrencesOfString:self.userip withString:@""];
     self.acname = [tmpstr2 stringByReplacingOccurrencesOfString:@"&wlanacname=" withString:@""];
     // try to login
     NSURL *loginUrl = [NSURL URLWithString:@"http://221.176.1.140/wlan/login.do"];
@@ -84,6 +81,10 @@ NSString *const CMCCLogoutNotification = @"CMCCLogoutNotification";
 }
 
 - (BOOL)logout {
+    if (!self.phone || !self.password) {
+        NSLog(@"No phone or password provided.");
+        return NO;
+    }
     NSURL *logoutUrl = [NSURL URLWithString:@"http://221.176.1.140/wlan/logout.do"];
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:logoutUrl
                                                        cachePolicy:NSURLRequestReloadIgnoringCacheData
