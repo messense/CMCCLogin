@@ -81,8 +81,8 @@ NSString * const CMCCLogoutNotification = @"CMCCLogoutNotification";
 }
 
 - (BOOL)logout {
-    if (!self.phone || !self.password) {
-        NSLog(@"No phone or password provided.");
+    if (!self.phone) {
+        NSLog(@"No phone provided.");
         return NO;
     }
     NSURL *logoutUrl = [NSURL URLWithString:@"http://221.176.1.140/wlan/logout.do"];
@@ -90,7 +90,7 @@ NSString * const CMCCLogoutNotification = @"CMCCLogoutNotification";
                                                        cachePolicy:NSURLRequestReloadIgnoringCacheData
                                                    timeoutInterval:10.0f];
     [req setHTTPMethod:@"POST"];
-    NSString *post = [NSString stringWithFormat:@"wlanuserip=%@&wlanacname=%@&wlanacip=&loginmode=static&logintime=&remaintime=&areacode=&productid=&effecttime=&expiretime=&keystr=&cf=&wlanacssid=CMCC&issaveinfo=&portion=cmcc&uaID=PCUA0002&logouttype=TYPESUBMIT&username=%@", self.userip, self.acname, self.phone];
+    NSString *post = [NSString stringWithFormat:@"wlanuserip=%@&wlanacname=%@&wlanacip=&loginmode=static&logintime=&remaintime=&areacode=&productid=&effecttime=&expiretime=&keystr=&cf=&wlanacssid=CMCC&issaveinfo=&portion=cmcc&uaID=PCUA0002&logouttype=TYPESUBMIT&username=%@&passflag=1&passtype=0&Token=First", self.userip, self.acname, self.phone];
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     NSString *length = [NSString stringWithFormat:@"%ld", [postData length]];
     [req setValue:length forHTTPHeaderField:@"Content-Length"];
