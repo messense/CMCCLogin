@@ -19,6 +19,7 @@
     BOOL _loaded;
     BOOL _manualStopped;
     CMCCLoginHelper *cmcc;
+    NSTimer *timer;
 }
 
 @end
@@ -148,7 +149,7 @@
         [self checkCMCCNetworkStatus:nil];
     });
     // Auto login
-    if ([defaults boolForKey:@"autologinwhenstart"] && ![cmcc online]) {
+    if ([defaults boolForKey:@"autologinwhenstart"] && !cmcc.online) {
         NetworkStatus cmccStatus = [cmccReachability currentReachabilityStatus];
         NetworkStatus hostStatus = [hostReachability currentReachabilityStatus];
         if ([[self currentWiFiSSID] isEqualToString:@"CMCC"] && cmccStatus == ReachableViaWiFi && hostStatus == ReachableViaWiFi) {
@@ -164,6 +165,13 @@
            selector:@selector(checkCMCCNetworkStatus:)
                name:kReachabilityChangedNotification
              object:nil];
+    // check network status every 10 minutes
+    timer= [NSTimer scheduledTimerWithTimeInterval:600
+                                            target:self
+                                          selector:@selector(checkNetworkStatusWithTimeInterval:)
+                                          userInfo:nil
+                                           repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
     _loaded = YES;
 }
 
@@ -184,6 +192,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(logoutOfCMCCWhenExit)
                                                  name:CMCCLogoutNotification object:nil];
+    // stop timer
+    [timer invalidate];
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults boolForKey:@"autologoutwhenexit"] && [[defaults objectForKey:@"wlanusername"] length] > 0 && [[defaults objectForKey:@"wlanpassword"] length] > 0 && cmcc.online) {
         [self logoutOfCMCC];
@@ -271,11 +282,15 @@
 #pragma mark Sleep and Wake Notification
 
 - (void)receiveSleepNote: (NSNotification*)note {
-    [self logoutOfCMCC];
+    if (cmcc.online) {
+        [self toggleService:nil];
+    }
 }
 
 - (void)receiveWakeNote: (NSNotification*)note {
-    [self loginToCMCC];
+    if (!cmcc.online && !_manualStopped) {
+        [self toggleService:nil];
+    }
 }
 
 - (void)sleepAndWakeNotifications {
@@ -294,11 +309,14 @@
 #pragma mark Wi-Fi Status
 
 - (void)checkCMCCNetworkStatus:(NSNotification *)notification {
+    if (_manualStopped) {
+        return;
+    }
     NetworkStatus cmccStatus = [cmccReachability currentReachabilityStatus];
     NetworkStatus hostStatus = [hostReachability currentReachabilityStatus];
     if (cmccStatus != ReachableViaWiFi) {
         cmcc.online = NO;
-        if (_loaded && !_manualStopped)
+        if (_loaded)
             [self showUserNotification:@"没有连接到 CMCC 无线网络，请检查！"];
         [self changeStatusBarState:NO];
         // disable login
@@ -307,7 +325,7 @@
         NSString *ssid = [self currentWiFiSSID];
         if (![ssid isEqualToString:@"CMCC"]) {
             cmcc.online = NO;
-            if (_loaded && !_manualStopped)
+            if (_loaded)
                 [self showUserNotification:@"没有连接到 CMCC 无线网洛，无法登录."];
             [self changeStatusBarState:NO];
             // disable login
@@ -319,18 +337,15 @@
                 [loginMenuItem setEnabled:YES];
                 if ([CMCCLoginHelper alreadyOnline]) {
                     cmcc.online = YES;
-                    if (_loaded && !_manualStopped)
+                    if (_loaded)
                         [self showUserNotification:@"CMCC 连接已恢复正常."];
                     [self changeStatusBarState:YES];
                 } else {
-                    if (_loaded && !_manualStopped && [[NSUserDefaults standardUserDefaults] boolForKey:@"autorelogin"]) {
+                    if (_loaded && [[NSUserDefaults standardUserDefaults] boolForKey:@"autorelogin"]) {
                         [self toggleService:nil];
                     } else {
-                        if (_loaded) {
-                            if (!_manualStopped)
-                                [self showUserNotification:@"CMCC 已断开."];
-                            [self changeStatusBarState:NO];
-                        }
+                        if (_loaded)
+                            [self showUserNotification:@"CMCC 可能已断开,请检查."];
                     }
                 }
             }
@@ -346,6 +361,10 @@
         return ssid;
     }
     return nil;
+}
+
+- (void)checkNetworkStatusWithTimeInterval:(NSTimer *) timer {
+    [self checkCMCCNetworkStatus:nil];
 }
 
 @end
